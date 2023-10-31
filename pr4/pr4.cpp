@@ -14,8 +14,23 @@ int main()
 	}
 
 	// tests
-	cout << "Monobit: " << Tester::monobit<N>(bits) << endl;
-	cout << "Maximum series length: " << Tester::long_runs<N>(bits) << endl;
-	cout << "Poker: " << Tester::poker<N>(bits) << endl;
-	cout << "Series length: " << Tester::runs<N>(bits) << endl;
+	bool check = Tester::monobit<N>(bits);
+	bool res = check;
+	cout << "Monobit: " << check << endl;
+
+	check = Tester::long_runs<N>(bits);
+	res &= check;
+	cout << "Maximum series length: " << check << endl;
+
+	check = Tester::poker<N>(bits);
+	res &= check;
+	cout << "Poker: " << check << endl;
+
+	check = Tester::runs<N>(bits);
+	res &= check;
+	cout << "Series length: " << check << endl;
+
+	cout << "Result: ";
+	if(res) cout << "20,000 bits are random enough" << endl;
+	else cout << "the bit sequence is rejected" << endl;
 }
